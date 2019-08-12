@@ -50,11 +50,6 @@ public class LugarTuristicoController implements Serializable {
         return lugares;
     }
 
-    public LugarTuristico addLugar() {
-        lugarTuristico = tl.agregarlugares(this.nombrePais, this.nombreCiudad, this.nombreTuristico, this.coordenadas);
-        return lugarTuristico;
-    }
-
     public LugarTuristico addLugarPais() {
         lugarTuristico = tl.agregarLugarConPais(this.nombrePais, this.nombreCiudad, this.nombreTuristico, this.coordenadas);
         return lugarTuristico;

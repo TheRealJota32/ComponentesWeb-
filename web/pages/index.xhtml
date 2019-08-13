@@ -1,0 +1,283 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta charset="utf-8" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/ComponentesFinal/assets/img/apple-icon.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/ComponentesFinal/assets/img/favicon.png"/>
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        
+        <link href="/ComponentesFinal/assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="/ComponentesFinal/assets/css/gaia.css" rel="stylesheet"/>
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600" rel="stylesheet" type="text/css"/>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="/ComponentesFinal/assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet"/>
+
+        <!--     My shit     -->
+        <link href="/ComponentesFinal/assets/css/style.css" rel="stylesheet"/>
+        <style>
+            .cuadrosSign{
+                height: 75px;
+            }
+            .signUp{
+                text-decoration: underline;
+            }
+        </style>
+    </h:head>
+
+    <h:body>
+
+        <nav class="navbar navbar-default navbar-transparent navbar-fixed-top" color-on-scroll="200">
+            <!-- if you want to keep the navbar hidden you can add this class to the navbar "navbar-burger"-->
+            <div class="container">
+                <div class="navbar-header">
+                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand">
+                        Gaia
+                    </a>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+        </nav>
+
+        <div class="section section-header">
+            <div class="parallax filter">
+                <div class="image"
+                     style="background-image: url('/ComponentesFinal/assets/img/beach.jpg')">
+                </div>
+                <div class="container">
+                    <div class="content">
+                        <div class="title-area">
+                            <h1 class="title-modern">Gaia</h1>
+                            <h2>Search for famous tourist locations, just <span onclick="focusSignUp()" class="signUp">sign up!</span></h2>
+                            <div class="separator line-separator">♦</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row">
+                    <div class="title-area">
+                        <h2>Our Services</h2>
+                        <div class="separator separator-danger">✻</div>
+                        <p class="description">We build for the sake of knowing knew places where we can explore and get a nice experience.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="info-icon">
+                            <div class="icon text-danger">
+                                <i class="pe-7s-cash"></i>
+                            </div>
+                            <h3>Cost</h3>
+                            <p class="description">
+                                This website will be free for people to search and get amazing locations.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-icon">
+                            <div class="icon text-danger">
+                                <i class="pe-7s-note2"></i>
+                            </div>
+                            <h3>Content</h3>
+                            <p class="description">
+                                We create a the website where you can search location based on country, cities, etc.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-icon">
+                            <div class="icon text-danger">
+                                <i class="pe-7s-compass"></i>
+                            </div>
+                            <h3>Location</h3>
+                            <p class="description">Especific location based on Google Maps directions.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-our-team-freebie" id="sign">
+            <div class="parallax filter filter-color-black">
+                <div class="image" style="background-image:url('/ComponentesFinal/assets/img/header-2.jpeg')">
+                </div>
+                <div class="container">
+                    <div class="content">
+                        <div class="row">
+                            <div class="title-area">
+                                <h2>Check It Out</h2>
+                                <div class="separator separator-danger">✻</div>
+                                <p class="description">Sign up or sign in to look some amazing places</p>
+                            </div>
+                        </div>
+
+                        <div class="team">
+                            <div class="row">
+                                <div class="col-md-10 col-md-offset-1">
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="card card-member">
+                                                <div class="content">
+                                                    <div style="color: #777777">
+                                                        <h2>Sign Up</h2>
+                                                    </div>
+                                                    <div class="division">
+                                                        <div class="line l"></div>
+                                                        <span>or</span>
+                                                        <div class="line r"></div>
+                                                    </div>
+                                                    <div class="form loginBox">
+                                                        <input id="nameRegister" class="form-control" type="text" placeholder="Name" name="nameRegister"/>
+                                                        <input id="lastNameRegister" class="form-control" type="text" placeholder="Lastname" name="lastNameRegister"/>
+                                                        <input id="emailRegister" class="form-control" type="text" placeholder="Email" name="emailRegister"/>
+                                                        <input id="usernameRegister" class="form-control" type="text" placeholder="Username" name="usernameRegister"/>
+                                                        <input id="passwordRegister" class="form-control" type="password" placeholder="Password" name="passwordRegister"/>
+                                                        <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation"/>
+                                                        <input class="btn btn-danger btn-fill" type="button" value="Register"/>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="card card-member">
+                                                <div class="content">
+                                                    <div style="color: #777777">
+                                                        <h2>Sign In</h2>
+                                                    </div>
+                                                    <div class="division">
+                                                        <div class="line l"></div>
+                                                        <span>or</span>
+                                                        <div class="line r"></div>
+                                                    </div>
+                                                    <div class="form loginBox" style="display: block;">
+                                                        <input id="email" class="form-control" type="text" placeholder="Email" name="email"/>
+                                                        <input id="password" class="form-control" type="password" placeholder="Password" name="password"/>
+                                                        <h3 style="padding: 15px"><a href="#">Change my password</a></h3>
+                                                        <input class="btn btn-danger btn-fill" type="button" value="Login"/>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section section-our-clients-freebie">
+            <div class="container">
+                <div class="title-area">
+                    <h5 class="subtitle text-gray">Here are some</h5>
+                    <h2>Users Testimonials</h2>
+                    <div class="separator separator-danger">∎</div>
+                </div>
+
+                <ul class="nav nav-text" role="tablist">
+                    <li class="active">
+                        <a href="#testimonial1" role="tab" data-toggle="tab">
+                            <div class="image-clients">
+                                <img alt="..." class="img-circle" src="/ComponentesFinal/assets/img/faces/face_5.jpg"/>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#testimonial2" role="tab" data-toggle="tab">
+                            <div class="image-clients">
+                                <img alt="..." class="img-circle" src="/ComponentesFinal/assets/img/faces/face_6.jpg"/>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#testimonial3" role="tab" data-toggle="tab">
+                            <div class="image-clients">
+                                <img src="/ComponentesFinal/assets/img/faces/face_2.jpg" alt="" class="img-circle"/>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane active" id="testimonial1">
+                        <p class="description">
+                            This page actually works, I didnt knew I had so many places to visit in my country(Bolivia), 
+                            since I started using this page, I have been traveling all around and knowing new places i didnt ever knew that exist. 
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="testimonial2">
+                        <p class="description">
+                            I used the website for some months actually, it help a lot when it came to travel to Costa Rica.
+                            It help me to get to see more places than I could ever imagine, thats why im gratefull for this page to exist.
+                            Thanks!
+                        </p>
+                    </div>
+                    <div class="tab-pane" id="testimonial3">
+                        <p class="description"> 
+                            Just got here. I was planning to travel to Nicaragua in my vacations, but watching the places that Jamaica have, 
+                            the beaches, restaurants, and culture in general of the country, might just go there, thanks a lot, I owe you one!
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer-big footer-color-black">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <span style="float:left;padding-bottom:25px">
+                            © 2019 - Daniel's
+                        </span>
+                        <span style="float:right;padding-bottom:25px">
+                            Universidad Latina de Costa Rica
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    <!--   core js files    -->
+    <script src="/ComponentesFinal/assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="/ComponentesFinal/assets/js/bootstrap.js" type="text/javascript"></script>
+
+    <!--  js library for devices recognition -->
+    <script type="text/javascript" src="/ComponentesFinal/assets/js/modernizr.js"></script>
+
+    <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
+    <script type="text/javascript" src="/ComponentesFinal/assets/js/gaia.js"></script>
+
+    <script>
+        function focusSignUp() {
+            $('html, body').animate({scrollTop: $("#sign").offset().top}, 'slow');
+        }
+    </script>
+    
+    </h:body>
+
+</html>

@@ -5,12 +5,14 @@ import edu.seguridad.service.SeguridadUsuario;
 import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  *
  * @author josepabloramirez
  */
-@ManagedBean(name = "UsuarioController")
+@ManagedBean(name = "usuarioController")
 @SessionScoped
 public class UsuarioController implements Serializable {
 
@@ -39,15 +41,18 @@ public class UsuarioController implements Serializable {
     public UsuarioController() {
     }
 
-    public Usuario login() {
+    public String login() {
         currentUser = su.loginClient(this.user, this.password);
-        return currentUser;
+        System.out.println(currentUser.getRol().getNombre());
+        return "galery";
     }
 
-    public Usuario signup() {
-        newUser = su.signUp(this.nombre, this.apellido, this.correo, this.username, this.pass);
-        addUserForApp();
-        return newUser;
+    public String signup() {
+        su.signUp(this.nombre, this.apellido, this.correo, this.username, this.pass);
+        newUser = su.loginClient(this.username, this.pass);
+        su.addAppForClient(newUser.getIdUsuario(), 1);
+        return "galery";
+        
     }
 
     public void verifyAccount() {
@@ -56,10 +61,6 @@ public class UsuarioController implements Serializable {
 
     public void verifyPassword() {
         su.verifyPass(this.correo, this.codigoPass, this.newPass);
-    }
-
-    public void addUserForApp() {
-        su.addAppForClient(this.newUser.getIdUsuario(), 1);
     }
 
     public String getUser() {
@@ -156,6 +157,21 @@ public class UsuarioController implements Serializable {
 
     public void setNewUser(Usuario newUser) {
         this.newUser = newUser;
+    }
+
+    public void redirect(String url) {
+        try {
+            HttpServletRequest request = (HttpServletRequest) FacesContext
+                    .getCurrentInstance().getExternalContext().getRequest();
+            FacesContext
+                    .getCurrentInstance()
+                    .getExternalContext()
+                    .redirect(
+                            request.getContextPath()
+                            + "/faces/views/" + url);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

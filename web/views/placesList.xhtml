@@ -3,71 +3,71 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
 
-<h:head>
-    <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/ComponentesFinal/assets/img/apple-icon.png"/>
-    <link rel="icon" type="image/png" sizes="96x96" href="/ComponentesFinal/assets/img/favicon.png"/>
+    <h:head>
+        <meta charset="utf-8" />
+        <link rel="apple-touch-icon" sizes="76x76" href="/TurismoWeb/assets/img/apple-icon.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/TurismoWeb/assets/img/favicon.png"/>
 
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
-    <link href="/ComponentesFinal/assets/css/bootstrap.css" rel="stylesheet" />
-    <link href="/ComponentesFinal/assets/css/gaia.css" rel="stylesheet"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+        <link href="/TurismoWeb/assets/css/bootstrap.css" rel="stylesheet" />
+        <link href="/TurismoWeb/assets/css/gaia.css" rel="stylesheet"/>
 
-    <!--     Fonts and icons     -->
-    <link href="https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600" rel="stylesheet" type="text/css"/>
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
-    <link href="/ComponentesFinal/assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet"/>
+        <!--     Fonts and icons     -->
+        <link href="https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600" rel="stylesheet" type="text/css"/>
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"/>
+        <link href="/TurismoWeb/assets/css/fonts/pe-icon-7-stroke.css" rel="stylesheet"/>
 
-    <!--     My shit     -->
-    <link href="/ComponentesFinal/assets/css/style.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"/>
-    <style>
-        .icon{
-            cursor: pointer;
-        }
-        a{
-            opacity: unset;
-        }
-        .alignCenter{
-            text-align: center;
-        }
-        td{
-            vertical-align: middle !important;
-        }
-        .btnAdd{
-            float:right;
-            margin: 10px;
-        }
-    </style>
-</h:head>
+        <!--     My shit     -->
+        <link href="/TurismoWeb/assets/css/style.css" rel="stylesheet"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"/>
+        <style>
+            .icon{
+                cursor: pointer;
+            }
+            a{
+                opacity: unset;
+            }
+            .alignCenter{
+                text-align: center;
+            }
+            td{
+                vertical-align: middle !important;
+            }
+            .btnAdd{
+                float:right;
+                margin: 10px;
+            }
+        </style>
+    </h:head>
 
-<h:body>
-        
-    <nav class="navbar navbar-default" color-on-scroll="200">
-        <div class="container">
-            <div class="navbar-header">
-                <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar1"></span>
-                    <span class="icon-bar bar2"></span>
-                    <span class="icon-bar bar3"></span>
-                </button>
-                <a class="navbar-brand">
-                    Gaia
-                </a>
-            </div>
-        </div>
-    </nav>
+    <h:body>
 
-    <div class="section pageContainer">
-        <div class="container">
-            <div class="row">
-                <div class="title-area-latina">
-                    <h2>List of places added</h2>
-                    <div class="separator separator-danger">✻</div>
+        <nav class="navbar navbar-default" color-on-scroll="200">
+            <div class="container">
+                <div class="navbar-header">
+                    <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                    <a class="navbar-brand">
+                        Gaia
+                    </a>
                 </div>
+            </div>
+        </nav>
+
+        <div class="section pageContainer">
+            <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="title-area-latina">
+                        <h2>List of places added</h2>
+                        <div class="separator separator-danger">✻</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
                             <div onClick="$('#addModal').modal();">
                                 <button type="button" class="btn btn-fill btn-danger btnAdd">Add new</button>
                             </div>
@@ -103,196 +103,196 @@
                                     </td>
                                 </tr>
                             </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer-big footer-color-black">
-        <div class="container">
-            <div class="col-md-12">
-                <div clas="copyright">
-                    <span style="float:left;padding-bottom:25px">
-                        © 2019  - Daniel's
-                    </span>
-                    <span style="float:right;padding-bottom:25px">
-                        Universidad Latina de Costa Rica
-                    </span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Modal Agregar-->
-    <div class="modal fade" id="addModal" role="dialog">
-        <div class="modal-dialog">
-        
-            <div class="modal-content">
-                <div class="modal-header alignCenter">
-                    <button type="button" class="close" data-dismiss="modal">Hola</button>
-                    <h3 class="modal-title"><strong>Add new location</strong></h3>
-                </div>
-                <div class="modal-body">
-                    <label for="addName">Name</label>
-                    <input type="text" class="form-control" id="addName" name="addName"/>
-
-                    <label for="addCountry">Country</label>
-                    <input type="text" class="form-control" id="addCountry" name="addCountry"/>
-
-                    <label for="addCity">City</label>
-                    <input type="text" class="form-control" id="addCity" name="addCity"/>
-
-                    <label for="addCoordinates">Geographical Coordinates</label>
-                    <input type="text" class="form-control" id="addCoordinates" name="addCoordinates"/>
-
-                    <label for="addImage">Image</label>
-                    <div class="form-group">
-                        <div class="input-group input-file">
-                            <input type="text" class="form-control" placeholder='Choose a file...' id="addImage" name="addImage"/>			
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
-                            </span>    
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-fill" onclick="addPlace()">Add</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+        <footer class="footer-big footer-color-black">
+            <div class="container">
+                <div class="col-md-12">
+                    <div clas="copyright">
+                        <span style="float:left;padding-bottom:25px">
+                            © 2019  - Daniel's
+                        </span>
+                        <span style="float:right;padding-bottom:25px">
+                            Universidad Latina de Costa Rica
+                        </span>
+                    </div>
                 </div>
             </div>
-            
-        </div>
-    </div>
+        </footer>
 
-    <!-- Modal Editar-->
-    <div class="modal fade" id="editModal" role="dialog">
-        <div class="modal-dialog">
-        
-            <div class="modal-content">
-                <div class="modal-header alignCenter">
-                    <button type="button" class="close" data-dismiss="modal">HOLA</button>
-                    <h3 class="modal-title"><strong>Edit Modal</strong></h3>
-                </div>
-                <div class="modal-body">
+        <!-- Modal Agregar-->
+        <div class="modal fade" id="addModal" role="dialog">
+            <div class="modal-dialog">
 
-                    <label for="editName">Name</label>
-                    <input type="text" class="form-control" id="editName" name="editName"/>
+                <div class="modal-content">
+                    <div class="modal-header alignCenter">
+                        <button type="button" class="close" data-dismiss="modal">Hola</button>
+                        <h3 class="modal-title"><strong>Add new location</strong></h3>
+                    </div>
+                    <div class="modal-body">
+                        <label for="addName">Name</label>
+                        <input type="text" class="form-control" id="addName" name="addName"/>
 
-                    <label for="editCountry">Country</label>
-                    <input type="text" class="form-control" id="editCountry" name="editCountry"/>
+                        <label for="addCountry">Country</label>
+                        <input type="text" class="form-control" id="addCountry" name="addCountry"/>
 
-                    <label for="editCity">City</label>
-                    <input type="text" class="form-control" id="editCity" name="editCity"/>
+                        <label for="addCity">City</label>
+                        <input type="text" class="form-control" id="addCity" name="addCity"/>
 
-                    <label for="editCoordinates">Geographical Coordinates</label>
-                    <input type="text" class="form-control" id="editCoordinates" name="editCoordinates"/>
+                        <label for="addCoordinates">Geographical Coordinates</label>
+                        <input type="text" class="form-control" id="addCoordinates" name="addCoordinates"/>
 
-                    <label for="editImage">Image</label>
-                    <div class="form-group">
-                        <div class="input-group input-file">
-                            <input type="text" class="form-control" placeholder='Choose a file...' id="editImage" name="editImage"/>			
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
-                            </span>    
+                        <label for="addImage">Image</label>
+                        <div class="form-group">
+                            <div class="input-group input-file">
+                                <input type="text" class="form-control" placeholder='Choose a file...' id="addImage" name="addImage"/>			
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
+                                </span>    
+                            </div>
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-fill" onclick="addPlace()">Add</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-fill" onclick="editPlace()">Edit</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
             </div>
-            
         </div>
-    </div>
 
-<!--   core js files    -->
-<script src="/ComponentesFinal/assets/js/jquery.min.js" type="text/javascript"></script>
-<script src="/ComponentesFinal/assets/js/bootstrap.js" type="text/javascript"></script>
+        <!-- Modal Editar-->
+        <div class="modal fade" id="editModal" role="dialog">
+            <div class="modal-dialog">
 
-<!--  js library for devices recognition -->
-<script type="text/javascript" src="/ComponentesFinal/assets/js/modernizr.js"></script>
+                <div class="modal-content">
+                    <div class="modal-header alignCenter">
+                        <button type="button" class="close" data-dismiss="modal">HOLA</button>
+                        <h3 class="modal-title"><strong>Edit Modal</strong></h3>
+                    </div>
+                    <div class="modal-body">
 
-<!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
-<script type="text/javascript" src="/ComponentesFinal/assets/js/gaia.js"></script>
+                        <label for="editName">Name</label>
+                        <input type="text" class="form-control" id="editName" name="editName"/>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8" type="text/javascript"></script>
+                        <label for="editCountry">Country</label>
+                        <input type="text" class="form-control" id="editCountry" name="editCountry"/>
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('[data-toggle="tooltip"]').tooltip(); 
-    });
-    
-    function addPlace(){
-        if(validateValues('add')){
-            Swal.fire({
-                title: 'Success!',
-                text: 'The new place was successfully added.',
-                type: 'success',
-                confirmButtonText: 'Ok'
-            });
-        }
-    }
+                        <label for="editCity">City</label>
+                        <input type="text" class="form-control" id="editCity" name="editCity"/>
 
-    function editPlace(){
-        if(validateValues('edit')){
-            Swal.fire({
-                title: 'Success!',
-                text: 'The place was edited correctly',
-                type: 'success',
-                confirmButtonText: 'Ok'
-            });
-        }
-    }
+                        <label for="editCoordinates">Geographical Coordinates</label>
+                        <input type="text" class="form-control" id="editCoordinates" name="editCoordinates"/>
 
-    function validateValues(type){
-        var result = false;
-        var a = $('#'+type+'Name').val();
-        var b = $('#'+type+'Country').val();
-        var c = $('#'+type+'City').val();
-        var d = $('#'+type+'Coordinates').val();
-        var e = $('#'+type+'Image').val();
-        console.log('#'+type+'Name');
-        if(a === null || a === "" || 
-          b === null || b === "" || 
-          c === null || c === "" || 
-          d === null || d === "" ||
-          e === null || e === ""){
-            Swal.fire({
-                title: 'Error!',
-                text: "It's required to fill all the spaces",
-                type: 'warning',
-                confirmButtonText: 'Ok'
-            });
-        }else{
-            result = true;
-        }
-        return result;
-    }
-    
-    function deleteValue(idLocation){
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            type: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#e78b90',
-            cancelButtonColor: '#ddd',
-            confirmButtonText: 'Yes'
-        }).then((result) => {
-            if (result.value) {
-                Swal.fire(
-                'Deleted!',
-                'The location has been deleted.',
-                'success'
-                )
-            }
-        });
-    }
-</script>
+                        <label for="editImage">Image</label>
+                        <div class="form-group">
+                            <div class="input-group input-file">
+                                <input type="text" class="form-control" placeholder='Choose a file...' id="editImage" name="editImage"/>			
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
+                                </span>    
+                            </div>
+                        </div>
 
-</h:body>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger btn-fill" onclick="editPlace()">Edit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--   core js files    -->
+        <script src="/TurismoWeb/assets/js/jquery.min.js" type="text/javascript"></script>
+        <script src="/TurismoWeb/assets/js/bootstrap.js" type="text/javascript"></script>
+
+        <!--  js library for devices recognition -->
+        <script type="text/javascript" src="/TurismoWeb/assets/js/modernizr.js"></script>
+
+        <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
+        <script type="text/javascript" src="/TurismoWeb/assets/js/gaia.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8" type="text/javascript"></script>
+
+        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $('[data-toggle="tooltip"]').tooltip();
+                            });
+
+                            function addPlace() {
+                                if (validateValues('add')) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'The new place was successfully added.',
+                                        type: 'success',
+                                        confirmButtonText: 'Ok'
+                                    });
+                                }
+                            }
+
+                            function editPlace() {
+                                if (validateValues('edit')) {
+                                    Swal.fire({
+                                        title: 'Success!',
+                                        text: 'The place was edited correctly',
+                                        type: 'success',
+                                        confirmButtonText: 'Ok'
+                                    });
+                                }
+                            }
+
+                            function validateValues(type) {
+                                var result = false;
+                                var a = $('#' + type + 'Name').val();
+                                var b = $('#' + type + 'Country').val();
+                                var c = $('#' + type + 'City').val();
+                                var d = $('#' + type + 'Coordinates').val();
+                                var e = $('#' + type + 'Image').val();
+                                console.log('#' + type + 'Name');
+                                if (a === null || a === "" ||
+                                        b === null || b === "" ||
+                                        c === null || c === "" ||
+                                        d === null || d === "" ||
+                                        e === null || e === "") {
+                                    Swal.fire({
+                                        title: 'Error!',
+                                        text: "It's required to fill all the spaces",
+                                        type: 'warning',
+                                        confirmButtonText: 'Ok'
+                                    });
+                                } else {
+                                    result = true;
+                                }
+                                return result;
+                            }
+
+                            function deleteValue(idLocation) {
+                                Swal.fire({
+                                    title: 'Are you sure?',
+                                    text: "You won't be able to revert this!",
+                                    type: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#e78b90',
+                                    cancelButtonColor: '#ddd',
+                                    confirmButtonText: 'Yes'
+                                }).then((result) => {
+                                    if (result.value) {
+                                        Swal.fire(
+                                                'Deleted!',
+                                                'The location has been deleted.',
+                                                'success'
+                                                )
+                                    }
+                                });
+                            }
+        </script>
+
+    </h:body>
 
 </html>

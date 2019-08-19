@@ -5,12 +5,19 @@ import edu.turismo.service.GoogleDriveService;
 import edu.turismo.service.TurismoLugares;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.Serializable;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -43,7 +50,8 @@ public class LugarTuristicoController implements Serializable {
 
     //Variables for images
     private LugarTuristico lugarTuristico;
-    private File filePath;
+    private UploadedFile file;
+    private StreamedContent image;
 
     public List<LugarTuristico> lugares() {
         lugares = tl.getLugaresTuristicos(this.buscadorPais);
@@ -55,17 +63,24 @@ public class LugarTuristicoController implements Serializable {
         return lugarTuristico;
     }
 
-    public LugarTuristico addLugarCiudad() {
+    public LugarTuristico addLugarCiudad() throws GeneralSecurityException, IOException {
         lugarTuristico = tl.agregarLugarConCiudad(this.nombreCiudad, this.nombreTuristico, this.coordenadas);
         return lugarTuristico;
     }
 
     public void imageUpload() throws GeneralSecurityException, IOException {
-        google.uploadImage(this.lugarTuristico, this.filePath);
+        google.uploadImage(this.lugarTuristico, this.file.getInputstream());
     }
 
     public void imageDownload() throws IOException, GeneralSecurityException {
-        google.getImage(this.lugarTuristico);
+        lugares();
+        InputStream googleImage = google.getImage(lugares.get(0));
+        image = new DefaultStreamedContent(googleImage, "image/jpeg");
+    }
+
+    public void lugarUpload() throws GeneralSecurityException, IOException {
+        this.addLugarCiudad();
+        this.imageUpload();
     }
 
     public void updateLugar() {
@@ -74,6 +89,18 @@ public class LugarTuristicoController implements Serializable {
 
     public void deleteLugar() {
         tl.borrarLugarTuristico(this.idLugarTuristico);
+    }
+
+    public void handleFileUpload(FileUploadEvent event) throws GeneralSecurityException, IOException {
+        file = event.getFile();
+        FacesMessage msg = new FacesMessage("Success! ", event.getFile().getFileName() + " is uploaded.");
+        FacesContext.getCurrentInstance().addMessage(null, msg);
+        try {
+            this.lugarTuristico = tl.buscarLugar(this.nombreTuristico);
+            GoogleDriveService.uploadImage(this.lugarTuristico, event.getFile().getInputstream());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public String getBuscadorPais() {
@@ -164,12 +191,20 @@ public class LugarTuristicoController implements Serializable {
         this.lugarTuristico = lugarTuristico;
     }
 
-    public File getFilePath() {
-        return filePath;
+    public UploadedFile getFile() {
+        return file;
     }
 
-    public void setFilePath(File filePath) {
-        this.filePath = filePath;
+    public void setFile(UploadedFile file) {
+        this.file = file;
+    }
+
+    public StreamedContent getImage() {
+        return image;
+    }
+
+    public void setImage(StreamedContent image) {
+        this.image = image;
     }
 
 }

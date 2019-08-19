@@ -58,13 +58,8 @@ public class LugarTuristicoController implements Serializable {
         return lugares;
     }
 
-    public LugarTuristico addLugarPais() {
-        lugarTuristico = tl.agregarLugarConPais(this.nombrePais, this.nombreCiudad, this.nombreTuristico, this.coordenadas);
-        return lugarTuristico;
-    }
-
-    public LugarTuristico addLugarCiudad() throws GeneralSecurityException, IOException {
-        lugarTuristico = tl.agregarLugarConCiudad(this.nombreCiudad, this.nombreTuristico, this.coordenadas);
+    public LugarTuristico addLugar() {
+        lugarTuristico = tl.agregarLugar(this.nombrePais, this.nombreCiudad, this.nombreTuristico, this.coordenadas);
         return lugarTuristico;
     }
 
@@ -79,7 +74,7 @@ public class LugarTuristicoController implements Serializable {
     }
 
     public void lugarUpload() throws GeneralSecurityException, IOException {
-        this.addLugarCiudad();
+        this.addLugar();
         this.imageUpload();
     }
 

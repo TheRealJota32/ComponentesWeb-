@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author josepabloramirez
  */
-@ManagedBean(name = "RolController")
+@ManagedBean(name = "rolController")
 @SessionScoped
 public class RolController implements Serializable {
 

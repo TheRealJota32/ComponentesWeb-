@@ -9,7 +9,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author josepabloramirez
  */
-@ManagedBean(name = "AppRolControllerController")
+@ManagedBean(name = "appRolControllerController")
 @SessionScoped
 public class AppRolController implements Serializable {
 

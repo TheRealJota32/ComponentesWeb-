@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta charset="utf-8" />
@@ -43,7 +44,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand">
+                    <a class="navbar-brand" href="galery.xhtml">
                         Gaia
                     </a>
                 </div>
@@ -70,12 +71,14 @@
                         <h2>Results from your search</h2>
                         <div class="separator separator-danger">✻</div>
                     </div>
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search again..."/>
-                        <span class="input-group-btn">
-                            <button class="btn btn-danger btn-fill" type="button">Go!</button>
-                        </span>
-                    </div>
+                    <h:form
+                        <div class="input-group">
+                            <p:inputText id="Search" class="form-control" type="text" placeholder="Search" value="#{lugarTuristicoController.buscadorPais}"/>
+                            <span class="input-group-btn">
+                                <h:commandButton id="GoG" value="Go!" class="btn btn-danger btn-fill " action="#{lugarTuristicoController.lugares()}" />
+                            </span>
+                        </div>
+                    </h:form>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info-icon">

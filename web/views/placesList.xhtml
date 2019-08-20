@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <meta charset="utf-8" />
@@ -52,9 +53,22 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                     <a class="navbar-brand" href="galery.xhtml">
+                    <a class="navbar-brand" href="galery.xhtml">
                         Gaia
                     </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right navbar-uppercase">
+                        <li>
+                            <a href="usersList.xhtml">User administration</a>
+                        </li>
+                        <li>
+                            <a href="placesList.xhtml">Places administration</a>
+                        </li>
+                        <li>
+                            <h:commandButton value="Log Out" action="#" class="btn btn-danger btnNav" />
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -85,7 +99,7 @@
                                     <td class="alignCenter">Canada</td>
                                     <td class="alignCenter">Alberta</td>
                                     <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="deleteValue(1);"><!--Poner el ID como parametro-->
+                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();"><!--Poner el ID como parametro-->
                                             <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
@@ -129,37 +143,39 @@
             <div class="modal-dialog">
 
                 <div class="modal-content">
-                    <div class="modal-header alignCenter">
-                        <button type="button" class="close" data-dismiss="modal">x</button>
-                        <h3 class="modal-title"><strong>Add new location</strong></h3>
-                    </div>
-                    <div class="modal-body">
-                        <label for="addName">Name</label>
-                        <input type="text" class="form-control" id="addName" name="addName"/>
+                    <h:form>
+                        <div class="modal-header alignCenter">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3 class="modal-title"><strong>Add new location</strong></h3>
+                        </div>
+                        <div class="modal-body">
+                            <label for="addName">Name</label>
+                            <p:inputText id="addName" class="form-control" type="text" placeholder="Place Name" value="#{lugarTuristicoController.nombreTuristico}"/>
 
-                        <label for="addCountry">Country</label>
-                        <input type="text" class="form-control" id="addCountry" name="addCountry"/>
+                            <label for="addCountry">Country</label>
+                            <p:inputText id="addCountry" class="form-control" type="text" placeholder="Country" value="#{lugarTuristicoController.nombrePais}"/>
 
-                        <label for="addCity">City</label>
-                        <input type="text" class="form-control" id="addCity" name="addCity"/>
+                            <label for="addCity">City</label>
+                            <p:inputText id="addCity" class="form-control" type="text" placeholder="City" value="#{lugarTuristicoController.nombreCiudad}"/>
 
-                        <label for="addCoordinates">Geographical Coordinates</label>
-                        <input type="text" class="form-control" id="addCoordinates" name="addCoordinates"/>
+                            <label for="addCoordinates">Geographical Coordinates</label>
+                            <p:inputText id="addCoordinates" class="form-control" type="text" placeholder="Coordinates" value="#{lugarTuristicoController.coordenadas}"/>
 
-                        <label for="addImage">Image</label>
-                        <div class="form-group">
-                            <div class="input-group input-file">
-                                <input type="text" class="form-control" placeholder='Choose a file...' id="addImage" name="addImage"/>			
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
-                                </span>    
+                            <label for="addImage">Image</label>
+                            <div class="form-group">
+                                <div class="input-group input-file">
+                                    <input type="text" class="form-control" placeholder='Choose a file...' id="addImage" name="addImage"/>			
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
+                                    </span>    
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-fill" onclick="addPlace()">Add</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
+                        <div class="modal-footer">
+                            <h:commandButton id="Add" value="Add Place" class="btn btn-danger btn-fill " action="#{lugarTuristicoController.addLugar()}" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </h:form>
                 </div>
 
             </div>
@@ -170,39 +186,51 @@
             <div class="modal-dialog">
 
                 <div class="modal-content">
-                    <div class="modal-header alignCenter">
-                        <button type="button" class="close" data-dismiss="modal">HOLA</button>
-                        <h3 class="modal-title"><strong>Edit Modal</strong></h3>
-                    </div>
-                    <div class="modal-body">
-
-                        <label for="editName">Name</label>
-                        <input type="text" class="form-control" id="editName" name="editName"/>
-
-                        <label for="editCountry">Country</label>
-                        <input type="text" class="form-control" id="editCountry" name="editCountry"/>
-
-                        <label for="editCity">City</label>
-                        <input type="text" class="form-control" id="editCity" name="editCity"/>
-
-                        <label for="editCoordinates">Geographical Coordinates</label>
-                        <input type="text" class="form-control" id="editCoordinates" name="editCoordinates"/>
-
-                        <label for="editImage">Image</label>
-                        <div class="form-group">
-                            <div class="input-group input-file">
-                                <input type="text" class="form-control" placeholder='Choose a file...' id="editImage" name="editImage"/>			
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger btn-fill btn-choose" type="button">Choose</button>
-                                </span>    
-                            </div>
+                    <h:form>
+                        <div class="modal-header alignCenter">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3 class="modal-title"><strong>Edit Modal</strong></h3>
                         </div>
+                        <div class="modal-body">
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-danger btn-fill" onclick="editPlace()">Edit</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    </div>
+                            <label for="ID Lugar">Place ID</label>
+                            <p:inputText id="idLugar" class="form-control" type="text" placeholder="ID Place" value="#{lugarTuristicoController.idLugarTuristico}"/>
+
+                            <label for="New Name">Place</label>
+                            <p:inputText id="nuevoNombre" class="form-control" type="text" placeholder="New Name" value="#{lugarTuristicoController.updateNombreTuristico}"/>
+
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton id="Update" value="Update place" class="btn btn-danger btn-fill " action="#{lugarTuristicoController.updateLugar()}" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </h:form>
+                </div>
+
+            </div>
+        </div>
+        
+        <!-- Modal Borrar-->
+        <div class="modal fade" id="deleteModal" role="dialog">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <h:form>
+                        <div class="modal-header alignCenter">
+                            <button type="button" class="close" data-dismiss="modal">x</button>
+                            <h3 class="modal-title"><strong>Delete Modal</strong></h3>
+                        </div>
+                        <div class="modal-body">
+
+                            <label for="ID Lugar">Place ID</label>
+                            <p:inputText id="idLugar" class="form-control" type="text" placeholder="ID Place" value="#{lugarTuristicoController.idLugarTuristico}"/>
+
+                        </div>
+                        <div class="modal-footer">
+                            <h:commandButton id="Delete" value="Delete place" class="btn btn-danger btn-fill " action="#{lugarTuristicoController.deleteLugar()}" />
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </h:form>
                 </div>
 
             </div>
@@ -221,76 +249,77 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8" type="text/javascript"></script>
 
         <script type="text/javascript">
-                            $(document).ready(function () {
-                                $('[data-toggle="tooltip"]').tooltip();
-                            });
+                                            $(document).ready(function () {
+                                                $('[data-toggle="tooltip"]').tooltip();
+                                            });
 
-                            function addPlace() {
-                                if (validateValues('add')) {
-                                    Swal.fire({
-                                        title: 'Success!',
-                                        text: 'The new place was successfully added.',
-                                        type: 'success',
-                                        confirmButtonText: 'Ok'
-                                    });
-                                }
-                            }
+                                            function addPlace() {
+                                                if (validateValues('add')) {
+                                                    Swal.fire({
+                                                        title: 'Success!',
+                                                        text: 'The new place was successfully added.',
+                                                        type: 'success',
+                                                        confirmButtonText: 'Ok'
+                                                    });
+                                                }
+                                            }
 
-                            function editPlace() {
-                                if (validateValues('edit')) {
-                                    Swal.fire({
-                                        title: 'Success!',
-                                        text: 'The place was edited correctly',
-                                        type: 'success',
-                                        confirmButtonText: 'Ok'
-                                    });
-                                }
-                            }
+                                            function editPlace() {
+                                                if (validateValues('edit')) {
+                                                    Swal.fire({
+                                                        title: 'Success!',
+                                                        text: 'The place was edited correctly',
+                                                        type: 'success',
+                                                        confirmButtonText: 'Ok'
+                                                    });
+                                                }
+                                            }
 
-                            function validateValues(type) {
-                                var result = false;
-                                var a = $('#' + type + 'Name').val();
-                                var b = $('#' + type + 'Country').val();
-                                var c = $('#' + type + 'City').val();
-                                var d = $('#' + type + 'Coordinates').val();
-                                var e = $('#' + type + 'Image').val();
-                                console.log('#' + type + 'Name');
-                                if (a === null || a === "" ||
-                                        b === null || b === "" ||
-                                        c === null || c === "" ||
-                                        d === null || d === "" ||
-                                        e === null || e === "") {
-                                    Swal.fire({
-                                        title: 'Error!',
-                                        text: "It's required to fill all the spaces",
-                                        type: 'warning',
-                                        confirmButtonText: 'Ok'
-                                    });
-                                } else {
-                                    result = true;
-                                }
-                                return result;
-                            }
+                                            function validateValues(type) {
+                                                var result = false;
+                                                var a = $('#' + type + 'Name').val();
+                                                var b = $('#' + type + 'Country').val();
+                                                var c = $('#' + type + 'City').val();
+                                                var d = $('#' + type + 'Coordinates').val();
+                                                var e = $('#' + type + 'Image').val();
+                                                console.log('#' + type + 'Name');
+                                                if (a === null || a === "" ||
+                                                        b === null || b === "" ||
+                                                        c === null || c === "" ||
+                                                        d === null || d === "" ||
+                                                        e === null || e === "") {
+                                                    Swal.fire({
+                                                        title: 'Error!',
+                                                        text: "It's required to fill all the spaces",
+                                                        type: 'warning',
+                                                        confirmButtonText: 'Ok'
+                                                    });
+                                                } else {
+                                                    result = true;
+                                                }
+                                                return result;
+                                            }
 
-                            function deleteValue(idLocation) {
-                                Swal.fire({
-                                    title: 'Are you sure?',
-                                    text: "You won't be able to revert this!",
-                                    type: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#e78b90',
-                                    cancelButtonColor: '#ddd',
-                                    confirmButtonText: 'Yes'
-                                }).then((result) => {
-                                    if (result.value) {
-                                        Swal.fire(
-                                                'Deleted!',
-                                                'The location has been deleted.',
-                                                'success'
-                                                )
-                                    }
-                                });
-                            }
+                                            function deleteValue(idLocation) {
+                                                Swal.fire({
+                                                    title: 'Are you sure?',
+                                                    text: "You won't be able to revert this!",
+                                                    type: 'warning',
+                                                    showCancelButton: true,
+                                                    confirmButtonColor: '#e78b90',
+                                                    cancelButtonColor: '#ddd',
+                                                    confirmButtonText: 'Yes'
+                                                }).then((result) => {
+                                                    if (result.value) {
+                                                        Swal.fire(
+                                                                'Deleted!',
+                                                                'The location has been deleted.',
+                                                                'success'
+                                                                deleteLugar()
+                                                                );
+                                                    }
+                                                });
+                                            }
         </script>
 
     </h:body>

@@ -12,7 +12,7 @@ import javax.faces.bean.SessionScoped;
  *
  * @author josepabloramirez
  */
-@ManagedBean(name = "ModuloController")
+@ManagedBean(name = "moduloController")
 @SessionScoped
 public class ModuloController implements Serializable {
 

@@ -23,7 +23,7 @@ import org.primefaces.model.UploadedFile;
  *
  * @author josepabloramirez
  */
-@ManagedBean(name = "LugarTuristicoController")
+@ManagedBean(name = "lugarTuristicoController")
 @SessionScoped
 public class LugarTuristicoController implements Serializable {
 

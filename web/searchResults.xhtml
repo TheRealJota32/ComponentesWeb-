@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta charset="utf-8" />
@@ -30,12 +31,31 @@
             a{
                 opacity: unset;
             }
+            .logo {
+                width: 5%
+            }
+
+            .detail {
+                width: 95%;
+                padding-left: 25px;
+            }
+
+            .detail td {
+                font-size: 24px;
+            }
+
+            .ui-datascroller .ui-datascroller-item {
+                border-bottom: 1px solid #A8A8A8;
+                padding: 25px 10px;
+                /* with the exported variables from Nova and Luna Themes*/
+                border-bottom-color: var(--input-border-color, #A8A8A8);
+            }
         </style>
     </h:head>
 
     <h:body>
 
-        <nav class="navbar navbar-default" color-on-scroll="200">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -71,7 +91,7 @@
                         <h2>Results from your search</h2>
                         <div class="separator separator-danger">✻</div>
                     </div>
-                    <h:form
+                    <h:form>
                         <div class="input-group">
                             <p:inputText id="Search" class="form-control" type="text" placeholder="Search" value="#{lugarTuristicoController.buscadorPais}"/>
                             <span class="input-group-btn">
@@ -80,68 +100,31 @@
                         </div>
                     </h:form>
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=lakelouise">
-                                    <div class="icon text-danger item">    
-                                        <img src="https://handluggageonly.co.uk/wp-content/uploads/2017/05/Lake-Louise.jpg"/>
-                                    </div>
-                                    <h3>Lake Louise</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=icefieldsparkway">
-                                    <div class="icon text-danger item">
-                                        <img src="https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2013/03/GettyImages-478080583_full_cs.jpg"/>
-                                    </div>
-                                    <h3>Icefields Parkway</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=albertatown">
-                                    <div class="icon text-danger item">
-                                        <img src="https://pinoy-canada.com/wp-content/uploads/2016/09/Banff-Alberta-Canada-11-1024x683.jpg"/>
-                                    </div>
-                                    <h3>Alberta Town</h3>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=telusworld">
-                                    <div class="icon text-danger item">
-                                        <img src="https://www.bcmag.ca/wp-content/uploads/2017/04/62328_max.jpg"/>
-                                    </div>
-                                    <h3>Telus World of Science</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=squamishbridge">
-                                    <div class="icon text-danger item">
-                                        <img src="http://vacay.ca/wp-content/uploads/2015/12/squamish-suspension-bridge-sea-to-sky.jpg"/>
-                                    </div>
-                                    <h3>Squamish suspension bridge</h3>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="info-icon">
-                                <a href="place.html?place=cathedralmontereal">
-                                    <div class="icon text-danger item">
-                                        <img src="https://i.pinimg.com/originals/37/09/96/370996469759416db7db253f3a07d623.jpg"/>
-                                    </div>
-                                    <h3>Cathedral of Montreal</h3>
-                                </a>
-                            </div>
-                        </div>
+                        <h:form> 
+                            <p:dataScroller value="#{lugarTuristicoController.places}" var="place" chunkSize="10">
+                                <f:facet name="header">
+                                    Scroll Down to Load More Places
+                                </f:facet>
+                                    
+                                <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                                    <h:inputHidden value="#{lugarTuristicoController.imageDownload(place)}"></h:inputHidden>
+                                    <p:graphicImage value="#{lugarTuristicoController.image}" width="120" height="120" /> 
+
+                                    <p:outputPanel>
+                                        <h:panelGrid columns="2" cellpadding="5">
+                                            <h:outputText value="Country:" />
+                                            <h:outputText value="#{place.ciudad.pais.nombre}" style="font-weight: bold"/>
+
+                                            <h:outputText value="City:" />
+                                            <h:outputText value="#{place.ciudad.nombre}" style="font-weight: bold"/>
+
+                                            <h:outputText value="Place" />
+                                            <h:outputText value="#{place.nombre}" style="font-weight: bold"/>
+                                        </h:panelGrid>
+                                    </p:outputPanel>
+                                </h:panelGrid>
+                            </p:dataScroller>
+                        </h:form>
                     </div>
                 </div>
             </div>

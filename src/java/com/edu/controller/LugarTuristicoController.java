@@ -34,7 +34,7 @@ public class LugarTuristicoController implements Serializable {
 
     //Variables for searching places by their country 
     private String buscadorPais;
-    private List<LugarTuristico> lugares = new ArrayList<>();
+    private List<LugarTuristico> places = new ArrayList<>();
 
     //Variables for adding places
     private int idPais;
@@ -53,9 +53,12 @@ public class LugarTuristicoController implements Serializable {
     private UploadedFile file;
     private StreamedContent image;
 
-    public List<LugarTuristico> lugares() {
-        lugares = tl.getLugaresTuristicos(this.buscadorPais);
-        return lugares;
+    public String lugares() {
+        places = tl.getLugaresTuristicos(this.buscadorPais);
+        for (LugarTuristico l : places) {
+            System.out.println(l.getNombre());
+        }
+        return "searchResults";
     }
 
     public LugarTuristico addLugar() {
@@ -67,9 +70,8 @@ public class LugarTuristicoController implements Serializable {
         google.uploadImage(this.lugarTuristico, this.file.getInputstream());
     }
 
-    public void imageDownload() throws IOException, GeneralSecurityException {
-        lugares();
-        InputStream googleImage = google.getImage(lugares.get(0));
+    public void imageDownload(LugarTuristico id) throws IOException, GeneralSecurityException {
+        InputStream googleImage = google.getImage(id);
         image = new DefaultStreamedContent(googleImage, "image/jpeg");
     }
 
@@ -106,12 +108,12 @@ public class LugarTuristicoController implements Serializable {
         this.buscadorPais = buscadorPais;
     }
 
-    public List<LugarTuristico> getLugares() {
-        return lugares;
+    public List<LugarTuristico> getPlaces() {
+        return places;
     }
 
-    public void setLugares(List<LugarTuristico> lugares) {
-        this.lugares = lugares;
+    public void setPlaces(List<LugarTuristico> places) {
+        this.places = places;
     }
 
     public int getIdPais() {

@@ -35,7 +35,7 @@
 
     <h:body>
 
-        <nav class="navbar navbar-default" color-on-scroll="200">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -51,10 +51,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
                         <li>
-                            <a href="usersList.xhtml">User administration</a>
+                            <h:link outcome="usersList.xhtml">User administration</h:link>
                         </li>
                         <li>
-                            <a href="placesList.xhtml">Places administration</a>
+                            <h:link outcome="placesList.xhtml">Places administration</h:link>
                         </li>
                         <li>
                             <h:commandButton value="Log Out" action="#" class="btn btn-danger btnNav" />
@@ -82,64 +82,64 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=lakelouise">
+                                <h:link outcome="place.xhtml">
                                     <div class="icon text-danger item">    
                                         <img src="https://handluggageonly.co.uk/wp-content/uploads/2017/05/Lake-Louise.jpg"/>
                                     </div>
                                     <h3>Lake Louise</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=icefieldsparkway">
+                                <h:link outcome="place.xhtml?place=icefieldsparkway">
                                     <div class="icon text-danger item">
                                         <img src="https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2013/03/GettyImages-478080583_full_cs.jpg"/>
                                     </div>
                                     <h3>Icefields Parkway</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=albertatown">
+                                <h:link outcome="place.xhtml?place=albertatown">
                                     <div class="icon text-danger item">
                                         <img src="https://pinoy-canada.com/wp-content/uploads/2016/09/Banff-Alberta-Canada-11-1024x683.jpg"/>
                                     </div>
                                     <h3>Alberta Town</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=telusworld">
+                                <h:link outcome="place.xhtml?place=telusworld">
                                     <div class="icon text-danger item">
                                         <img src="https://www.bcmag.ca/wp-content/uploads/2017/04/62328_max.jpg"/>
                                     </div>
                                     <h3>Telus World of Science</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=squamishbridge">
+                                <h:link outcome="place.xhtml?place=squamishbridge">
                                     <div class="icon text-danger item">
                                         <img src="http://vacay.ca/wp-content/uploads/2015/12/squamish-suspension-bridge-sea-to-sky.jpg"/>
                                     </div>
                                     <h3>Squamish suspension bridge</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <a href="place.xhtml?place=cathedralmontereal">
+                                <h:link outcome="place.xhtml?place=cathedralmontereal">
                                     <div class="icon text-danger item">
                                         <img src="https://i.pinimg.com/originals/37/09/96/370996469759416db7db253f3a07d623.jpg"/>
                                     </div>
                                     <h3>Cathedral of Montreal</h3>
-                                </a>
+                                </h:link>
                             </div>
                         </div>
                     </div>

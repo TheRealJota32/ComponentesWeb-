@@ -45,9 +45,9 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand">
+                    <h:link class="navbar-brand">
                         Gaia
-                    </a>
+                    </h:link>>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -175,7 +175,7 @@
                                                         <div class="form loginBox" style="display: block;">
                                                             <p:inputText id="username" class="form-control" type="text" placeholder="Username" value="#{usuarioController.user}"/>
                                                             <p:inputText id="password" class="form-control" type="password" placeholder="Password" value="#{usuarioController.password}"/>
-                                                            <h3 style="padding: 15px"><a href="cambiarContrasenna.xhtml">Change my password</a></h3>
+                                                            <h3 style="padding: 15px"><h:link outcome="cambiarContrasenna.xhtml">Change my password</h:link>></h3>
                                                             <h:commandButton id="loginId" class="btn btn-danger btn-fill" value="Login" action="#{usuarioController.login()}"/>
                                                         </div> 
                                                     </h:form>

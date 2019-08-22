@@ -38,12 +38,15 @@
                 float:right;
                 margin: 10px;
             }
+            .onlyAdmin{
+                display: none !important;
+            }
         </style>
     </h:head>
 
     <h:body>
 
-        <nav class="navbar navbar-default" color-on-scroll="200">
+        <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
                     <button id="menu-toggle" type="button" class="navbar-toggle" data-toggle="collapse" data-target="#example">
@@ -52,20 +55,22 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="galery.xhtml">
+                    <h:link class="navbar-brand" outcome="galery?faces-redirect=true">
                         Gaia
-                    </a>
+                    </h:link>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                        <li>
-                            <a href="usersList.xhtml">User administration</a>
+                        <li id="userList">
+                            <h:link outcome="usersList?faces-redirect=true">User administration</h:link>
+                        </li>
+                        <li id="placesList">
+                            <h:link outcome="placesList?faces-redirect=true">Places administration</h:link>
                         </li>
                         <li>
-                            <a href="placesList.xhtml">Places administration</a>
-                        </li>
-                        <li>
-                            <h:commandButton value="Log Out" action="#" class="btn btn-danger btnNav" />
+                            <h:form>
+                                <h:commandButton value="Log Out" action="#{usuarioController.logout()}" class="btn btn-danger btnNav" />
+                            </h:form>
                         </li>
                     </ul>
                 </div>
@@ -84,8 +89,8 @@
                             <table class="table table-hover" style="font-size: 16px;">
                                 <head>
                                     <th class="alignCenter">#</th>
-                                    <th>Nombre</th>
-                                    <th>Apellido</th>
+                                    <th>Name</th>
+                                    <th>Last Name</th>
                                     <th class="alignCenter">Email</th>
                                 </head>
                                 <tr>
@@ -93,6 +98,24 @@
                                     <td>Sebastian</td>
                                     <td>Vargas Rojas</td>
                                     <td class="alignCenter">svr@gmail.com</td>
+                                </tr>
+                                <tr>
+                                    <td class="alignCenter">2</td>
+                                    <td>Jose Pablo</td>
+                                    <td>Ramirez Mayorga</td>
+                                    <td class="alignCenter">jotaramirez.100@.com</td>
+                                </tr>
+                                <tr>
+                                    <td class="alignCenter">3</td>
+                                    <td>Kenneth Antonio</td>
+                                    <td>Murillo Castillo</td>
+                                    <td class="alignCenter">kennethmc08@.com</td>
+                                </tr>
+                                <tr>
+                                    <td class="alignCenter">4</td>
+                                    <td>Diego</td>
+                                    <td>Alfaro Quiros</td>
+                                    <td class="alignCenter">diego86@.com</td>
                                 </tr>
                             </table>
                         </div>
@@ -133,72 +156,6 @@
                 $('[data-toggle="tooltip"]').tooltip();
             });
 
-            function addPlace() {
-                if (validateValues('add')) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'The new place was successfully added.',
-                        type: 'success',
-                        confirmButtonText: 'Ok'
-                    });
-                }
-            }
-
-            function editPlace() {
-                if (validateValues('edit')) {
-                    Swal.fire({
-                        title: 'Success!',
-                        text: 'The place was edited correctly',
-                        type: 'success',
-                        confirmButtonText: 'Ok'
-                    });
-                }
-            }
-
-            function validateValues(type) {
-                var result = false;
-                var a = $('#' + type + 'Name').val();
-                var b = $('#' + type + 'Country').val();
-                var c = $('#' + type + 'City').val();
-                var d = $('#' + type + 'Coordinates').val();
-                var e = $('#' + type + 'Image').val();
-                console.log('#' + type + 'Name');
-                if (a === null || a === "" ||
-                        b === null || b === "" ||
-                        c === null || c === "" ||
-                        d === null || d === "" ||
-                        e === null || e === "") {
-                    Swal.fire({
-                        title: 'Error!',
-                        text: "It's required to fill all the spaces",
-                        type: 'warning',
-                        confirmButtonText: 'Ok'
-                    });
-                } else {
-                    result = true;
-                }
-                return result;
-            }
-
-            function deleteValue(idLocation) {
-                Swal.fire({
-                    title: 'Are you sure?',
-                    text: "You won't be able to revert this!",
-                    type: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#e78b90',
-                    cancelButtonColor: '#ddd',
-                    confirmButtonText: 'Yes'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                                'Deleted!',
-                                'The location has been deleted.',
-                                'success'
-                                )
-                    }
-                });
-            }
         </script>
 
     </h:body>

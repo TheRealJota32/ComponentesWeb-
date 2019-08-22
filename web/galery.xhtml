@@ -30,6 +30,9 @@
             a{
                 opacity: unset;
             }
+            .onlyAdmin{
+                display: none !important;
+            }
         </style>
     </h:head>
 
@@ -44,20 +47,22 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand">
+                    <h:link class="navbar-brand">
                         Gaia
-                    </a>
+                    </h:link>
                 </div>
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
-                        <li>
-                            <h:link outcome="usersList.xhtml">User administration</h:link>
+                        <li id="userList">
+                            <h:link outcome="usersList?faces-redirect=true">User administration</h:link>
+                        </li>
+                        <li id="placesList">
+                            <h:link outcome="placesList?faces-redirect=true">Places administration</h:link>
                         </li>
                         <li>
-                            <h:link outcome="placesList.xhtml">Places administration</h:link>
-                        </li>
-                        <li>
-                            <h:commandButton value="Log Out" action="#" class="btn btn-danger btnNav" />
+                            <h:form>
+                                <h:commandButton value="Log Out" action="#{usuarioController.logout()}" class="btn btn-danger btnNav" />
+                            </h:form>
                         </li>
                     </ul>
                 </div>
@@ -138,7 +143,7 @@
                                     <div class="icon text-danger item">
                                         <img src="https://i.pinimg.com/originals/37/09/96/370996469759416db7db253f3a07d623.jpg"/>
                                     </div>
-                                    <h3>Cathedral of Montreal</h3>
+                                    <h3>Notre-Dame Basilica (Montreal)</h3>
                                 </h:link>
                             </div>
                         </div>
@@ -175,6 +180,9 @@
         <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
         <script type="text/javascript" src="/TurismoWeb/assets/js/gaia.js"></script>
 
+        <!--   file where we handle all the menu options  -->
+        <script type="text/javascript" src="/TurismoWeb/assets/js/logic.js"></script>
+
         <script>
             $(function () {
                 $("#includeHeader").load("header.html");
@@ -183,5 +191,6 @@
                 $("#includeFooter").load("footer.html");
             });
         </script> 
+
     </h:body>
 </html>

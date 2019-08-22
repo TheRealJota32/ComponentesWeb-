@@ -47,7 +47,7 @@
                     </button>
                     <h:link class="navbar-brand">
                         Gaia
-                    </h:link>>
+                    </h:link>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -62,7 +62,7 @@
                     <div class="content">
                         <div class="title-area">
                             <h1 class="title-modern">Gaia</h1>
-                            <h2>Search for famous tourist locations, just <span onclick="focusSignUp()" class="signUp">sign up!</span></h2>
+                            <h2>Search for famous tourist locations, just <span onclick="focusSignUp()" class="signUp" style="cursor: pointer">sign up!</span></h2>
                             <div class="separator line-separator">♦</div>
                         </div>
                     </div>
@@ -175,7 +175,7 @@
                                                         <div class="form loginBox" style="display: block;">
                                                             <p:inputText id="username" class="form-control" type="text" placeholder="Username" value="#{usuarioController.user}"/>
                                                             <p:inputText id="password" class="form-control" type="password" placeholder="Password" value="#{usuarioController.password}"/>
-                                                            <h3 style="padding: 15px"><h:link outcome="cambiarContrasenna.xhtml">Change my password</h:link>></h3>
+                                                            <h3 style="padding: 15px"><h:link outcome="cambiarContrasenna?faces-redirect=true">Change my password</h:link>></h3>
                                                             <h:commandButton id="loginId" class="btn btn-danger btn-fill" value="Login" action="#{usuarioController.login()}"/>
                                                         </div> 
                                                     </h:form>

@@ -49,7 +49,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <h:link class="navbar-brand" outcome="index.xhtml">
+                    <h:link class="navbar-brand" outcome="index?faces-redirect=true">
                         Gaia
                     </h:link>
                 </div>
@@ -74,8 +74,8 @@
                                 <div class="row">
                                     <div class="form">
                                         <h:outputLabel>Email</h:outputLabel>
-                                        <h:inputText value=""  class="form-control"/>
-                                        <p:commandButton value="Send" action="#" class="btn btn-danger"/>
+                                        <h:inputText value="#{usuarioController.correo}" class="form-control"/>
+                                        <p:commandButton value="Send" action="#{usuarioController.sendEmail()}" class="btn btn-danger"/>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -84,11 +84,11 @@
                                             <p class="description"><strong>2. Please enter the code recieved in your email in the next text space and your new password</strong></p>
                                         </div>
                                         <h:outputLabel>Code recieved</h:outputLabel>
-                                        <h:inputText value=""  class="form-control"/>
+                                        <h:inputText value="#{usuarioController.codigoPass}" class="form-control"/>
                                         <h:outputLabel for="email">New password</h:outputLabel>
-                                        <h:inputSecret value=""  class="form-control"/>
+                                        <h:inputSecret value="#{usuarioController.newPass}" class="form-control"/>
 
-                                        <p:commandButton value="Submit" action="#" class="btn btn-danger"/>
+                                        <p:commandButton value="Submit" action="#{usuarioController.verifyPassword()}" class="btn btn-danger"/>
                                     </div>
                                 </div>
                             </h:form>

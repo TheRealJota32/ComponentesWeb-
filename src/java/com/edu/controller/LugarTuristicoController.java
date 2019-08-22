@@ -58,7 +58,8 @@ public class LugarTuristicoController implements Serializable {
         for (LugarTuristico l : places) {
             System.out.println(l.getNombre());
         }
-        return "searchResults";
+        this.buscadorPais = "";
+        return "searchResults?faces-redirect=true";
     }
 
     public LugarTuristico addLugar() {
@@ -98,6 +99,10 @@ public class LugarTuristicoController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    
+    public String redirectAfterPlace(){
+        return "placesList?faces-redirect=true";
     }
 
     public String getBuscadorPais() {

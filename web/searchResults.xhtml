@@ -112,22 +112,28 @@
                                     Scroll Down to Load More Places
                                 </f:facet>
                                 <h:inputHidden value="#{lugarTuristicoController.imageDownload(place)}"></h:inputHidden>
-                                <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
-                                    <p:graphicImage value="#{lugarTuristicoController.image}" width="150" height="150"  /> 
+                                <h:outputLink value="place.xhtml">
+                                    <f:param name="nombre" value="#{place.nombre}" />
+                                    <f:param name="ciudad" value="#{place.ciudad.nombre}" />
+                                    <f:param name="pais" value="#{place.ciudad.pais.nombre}" />
+                                    <f:param name="coordenadas" value="#{place.geoCorde}" />
+                                    <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+                                        <p:graphicImage value="#{lugarTuristicoController.image}" width="150" height="150"  /> 
 
-                                    <p:outputPanel>
-                                        <h:panelGrid columns="2" cellpadding="5">
-                                            <h:outputText value="Country:" style="padding-right: 10px" />
-                                            <h:outputText value="#{place.ciudad.pais.nombre}" style="font-weight: bold"/>
+                                        <p:outputPanel>
+                                            <h:panelGrid columns="2" cellpadding="5">
+                                                <h:outputText value="Country:" style="padding-right: 10px" />
+                                                <h:outputText value="#{place.ciudad.pais.nombre}" style="font-weight: bold"/>
 
-                                            <h:outputText value="City:" />
-                                            <h:outputText value="#{place.ciudad.nombre}" style="font-weight: bold"/>
+                                                <h:outputText value="City:" />
+                                                <h:outputText value="#{place.ciudad.nombre}" style="font-weight: bold"/>
 
-                                            <h:outputText value="Place:" />
-                                            <h:outputText value="#{place.nombre}" style="font-weight: bold"/>
-                                        </h:panelGrid>
-                                    </p:outputPanel>
-                                </h:panelGrid>
+                                                <h:outputText value="Place:" />
+                                                <h:outputText value="#{place.nombre}" style="font-weight: bold"/>
+                                            </h:panelGrid>
+                                        </p:outputPanel>
+                                    </h:panelGrid>
+                                </h:outputLink>
                             </p:dataScroller>
                         </h:form>
                     </div>

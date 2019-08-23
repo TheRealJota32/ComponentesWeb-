@@ -73,7 +73,7 @@ public class LugarTuristicoController implements Serializable {
 
     public void imageDownload(LugarTuristico id) throws IOException, GeneralSecurityException {
         InputStream googleImage = google.getImage(id);
-        image = new DefaultStreamedContent(googleImage, "image/jpeg");
+        this.image = new DefaultStreamedContent(googleImage, "image/jpeg");
     }
 
     public void lugarUpload() throws GeneralSecurityException, IOException {
@@ -99,9 +99,15 @@ public class LugarTuristicoController implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        this.lugarTuristico = null;
     }
-    
-    public String redirectAfterPlace(){
+
+    public LugarTuristico placeView() {
+        this.lugarTuristico = tl.buscarLugar(this.nombreTuristico);
+        return lugarTuristico;
+    }
+
+    public String redirectAfterPlace() {
         return "placesList?faces-redirect=true";
     }
 

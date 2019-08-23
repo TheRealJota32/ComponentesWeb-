@@ -33,6 +33,9 @@
             .onlyAdmin{
                 display: none !important;
             }
+            .navbar{
+                margin-bottom: 0px !important;
+            }
         </style>
     </h:head>
 
@@ -74,15 +77,12 @@
         <div class="section" style="padding: 0px !important">
             <div class="section-header">
                 <div class="parallax filter">
-                    <div class="image"
-                         style="background-image: url('https://pinoy-canada.com/wp-content/uploads/2016/09/Banff-Alberta-Canada-11-1024x683.jpg');
-                         bottom: 0%">
-                    </div>
+                    <div class="image" style="background-image: url('/TurismoWeb/assets/img/beach.jpg')"></div>
                     <div class="container">
                         <div class="content">
                             <div class="title-area">
-                                <h1 class="title-modern">Alberta Town</h1>
-                                <h2>Canada, Alberta, Calgary</h2>
+                                <h1 class="title-modern">#{param['nombre']}</h1>
+                                <h2>#{param['pais']}, #{param['ciudad']}, #{param['nombre']}</h2>
                                 <div class="separator line-separator">♦</div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
             </div>
 
 
-            <div style="padding-bottom: 130px;margin-top: 20px;">
+            <div style="padding-bottom: 20px;margin-top: 20px;">
                 <div class="container">
                     <div class="row">
                         <div class="title-area-latina">
@@ -102,7 +102,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJci_d48MpF0XwneyFOhBMIRmpClwgnTE"></script>
-                            <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
+                            <p:gmap center="#{param['coordenadas']}" zoom="15" type="HYBRID" style="width:100%;height:400px" />
                         </div>
                     </div>
                     <br/>

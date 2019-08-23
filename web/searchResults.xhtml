@@ -74,10 +74,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
                         <li id="userList">
-                            <h:link outcome="usersList?faces-redirect=true">User administration</h:link>
+                            <h:link outcome="usersList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">User administration</h:link>
                         </li>
                         <li id="placesList">
-                            <h:link outcome="placesList?faces-redirect=true">Places administration</h:link>
+                            <h:link outcome="placesList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">Places administration</h:link>
                         </li>
                         <li>
                             <h:form>

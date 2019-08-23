@@ -1,12 +1,12 @@
-window.onload = function () {
-    let valCookie = readCookie('RolName');
-    if (valCookie !== 'Administrador') {
-        let elementUserList = document.getElementById("userList");
-        elementUserList.classList.add("onlyAdmin");
-        let elementPlacesList = document.getElementById("placesList");
-        elementPlacesList.classList.add("onlyAdmin");
-    }
-};
+//window.onload = function () {
+//    let valCookie = readCookie('RolName');
+//    if (valCookie !== 'Administrador') {
+//        let elementUserList = document.getElementById("userList");
+//        elementUserList.classList.add("onlyAdmin");
+//        let elementPlacesList = document.getElementById("placesList");
+//        elementPlacesList.classList.add("onlyAdmin");
+//    }
+//};
 
 function readCookie(name) {
     let nameEQ = name + "=";

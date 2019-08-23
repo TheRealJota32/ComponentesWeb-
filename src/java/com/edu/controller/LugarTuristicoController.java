@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.security.GeneralSecurityException;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -47,11 +48,15 @@ public class LugarTuristicoController implements Serializable {
     //Variables for deletes and updates
     private int idLugarTuristico;
     private String updateNombreTuristico;
+    private LugarTuristico selectedLugarTuristico;
 
     //Variables for images
     private LugarTuristico lugarTuristico;
     private UploadedFile file;
     private StreamedContent image;
+
+    //Variable for all places
+    private List<LugarTuristico> allPlaces = new ArrayList<>();
 
     public String lugares() {
         places = tl.getLugaresTuristicos(this.buscadorPais);
@@ -64,6 +69,7 @@ public class LugarTuristicoController implements Serializable {
 
     public LugarTuristico addLugar() {
         lugarTuristico = tl.agregarLugar(this.nombrePais, this.nombreCiudad, this.nombreTuristico, this.coordenadas);
+        this.allLugares();
         return lugarTuristico;
     }
 
@@ -81,12 +87,20 @@ public class LugarTuristicoController implements Serializable {
         this.imageUpload();
     }
 
-    public void updateLugar() {
-        tl.modificarLugarTuristico(this.idLugarTuristico, this.updateNombreTuristico);
+    public void updateLugar(int id) {
+        tl.modificarLugarTuristico(id, this.selectedLugarTuristico.getNombre(), this.selectedLugarTuristico.getGeoCorde());
+        FacesContext.getCurrentInstance().addMessage("places", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Modified Place"));
     }
 
-    public void deleteLugar() {
-        tl.borrarLugarTuristico(this.idLugarTuristico);
+    public void deleteLugar(int id) {
+        tl.borrarLugarTuristico(id);
+        for (LugarTuristico l : this.allPlaces) {
+            if (l.getId() == id) {
+                this.allPlaces.remove(l);
+                break;
+            }
+        }
+        FacesContext.getCurrentInstance().addMessage("places", new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "Modified Place"));
     }
 
     public void handleFileUpload(FileUploadEvent event) throws GeneralSecurityException, IOException {
@@ -109,6 +123,11 @@ public class LugarTuristicoController implements Serializable {
 
     public String redirectAfterPlace() {
         return "placesList?faces-redirect=true";
+    }
+
+    @PostConstruct
+    public void allLugares() {
+        this.allPlaces = tl.getLugaresTuristicos();
     }
 
     public String getBuscadorPais() {
@@ -213,6 +232,22 @@ public class LugarTuristicoController implements Serializable {
 
     public void setImage(StreamedContent image) {
         this.image = image;
+    }
+
+    public List<LugarTuristico> getAllPlaces() {
+        return allPlaces;
+    }
+
+    public void setAllPlaces(List<LugarTuristico> allPlaces) {
+        this.allPlaces = allPlaces;
+    }
+
+    public LugarTuristico getSelectedLugarTuristico() {
+        return selectedLugarTuristico;
+    }
+
+    public void setSelectedLugarTuristico(LugarTuristico selectedLugarTuristico) {
+        this.selectedLugarTuristico = selectedLugarTuristico;
     }
 
 }

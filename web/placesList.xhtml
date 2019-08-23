@@ -2,7 +2,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <meta charset="utf-8" />
@@ -45,7 +46,7 @@
         </style>
     </h:head>
 
-    <h:body>
+    <h:body rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">
 
         <nav class="navbar navbar-default">
             <div class="container">
@@ -63,10 +64,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
                         <li id="userList">
-                            <h:link outcome="usersList?faces-redirect=true">User administration</h:link>
+                            <h:link outcome="usersList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">User administration</h:link>
                         </li>
                         <li id="placesList">
-                            <h:link outcome="placesList?faces-redirect=true">Places administration</h:link>
+                            <h:link outcome="placesList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">Places administration</h:link>
                         </li>
                         <li>
                             <h:form>
@@ -86,129 +87,68 @@
                         <div class="separator separator-danger">✻</div>
                     </div>
                     <div class="row">
+                        <h:form>
+                            <h:commandLink class="btn btn-fill btn-danger btnAdd" action="addPlace?faces-redirect=true" value="Add New"></h:commandLink>
+                        </h:form>
                         <div class="col-md-12">
-                            <div onClick="$('#addModal').modal();">
-                                <h:form>
-                                    <h:commandLink class="btn btn-fill btn-danger btnAdd" action="addPlace?faces-redirect=true" value="Add New"></h:commandLink>
-                                </h:form>
-                            </div>
-                            <table class="table table-hover" style="font-size: 16px;">
-                                <tr>
-                                    <th class="alignCenter">#</th>
-                                    <th>Place</th>
-                                    <th class="alignCenter">Country</th>
-                                    <th class="alignCenter">City</th>
-                                    <th class="alignCenter">Functions</th>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">1</td>
-                                    <td>Calgary</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">Alberta</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">2</td>
-                                    <td>Lake Louise</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">Alberta</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">3</td>
-                                    <td>Icefields Parkway</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">Alberta</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">4</td>
-                                    <td>Telus World of Science</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">Alberta</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">5</td>
-                                    <td>Squamish suspension bridge</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">British Columbia</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="alignCenter">6</td>
-                                    <td>Notre-Dame Basilica</td>
-                                    <td class="alignCenter">Canada</td>
-                                    <td class="alignCenter">Quebec</td>
-                                    <td class="alignCenter">
-                                        <div style="display: inline-block;" onClick="$('#deleteModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Delete">
-                                                <i class="fas fa-trash-alt"></i>
-                                            </button>
-                                        </div>
-                                        <div style="display: inline-block;padding-left: 10px;" onClick="$('#editModal').modal();">
-                                            <button type="button" class="btn btn-danger" data-toggle="tooltip" title="Edit">
-                                                <i class="fas fa-edit"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </table>
+                            <h:form id="places">
+                                <p:growl id="msgs" showDetail="true" life="3000"/>
+
+                                <p:dataTable id="basicDT" var="place" value="#{lugarTuristicoController.allPlaces}">
+                                    <f:facet name="header">
+                                        Places of Gaia
+                                    </f:facet>
+                                    <p:column headerText="Id">
+                                        <h:outputText value="#{place.id}" />
+                                    </p:column>
+                                    <p:column headerText="Country">
+                                        <h:outputText value="#{place.ciudad.pais.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="City">
+                                        <h:outputText value="#{place.ciudad.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Place">
+                                        <h:outputText value="#{place.nombre}" />
+                                    </p:column>
+                                    <p:column headerText="Coordinates">
+                                        <h:outputText value="#{place.geoCorde}" />
+                                    </p:column>
+                                    <p:column style="text-align: center">
+                                        <p:commandButton value="Delete" action="#{lugarTuristicoController.deleteLugar(place.id)}" update=":places"  >
+                                            <p:confirm header="Confirmation" message="Are you sure?" icon="fa fa-exclamation-triangle" />
+                                        </p:commandButton>
+                                        <p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+                                            <p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+                                            <p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+                                        </p:confirmDialog>  
+                                    </p:column>
+                                    <p:column style="text-align: center">
+                                        <p:commandButton update=":places:placeDetail" oncomplete="PF('editDialog').show()" title="View" action="#{usuarioController.selectedUserRol(user)}" value="Update">
+                                            <f:setPropertyActionListener value="#{place}" target="#{lugarTuristicoController.selectedLugarTuristico}" />
+                                        </p:commandButton>
+                                    </p:column>
+                                </p:dataTable>
+
+                                <p:dialog header="Update Place" widgetVar="editDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false">
+                                    <p:outputPanel id="placeDetail" style="text-align:center;">
+                                        <p:panelGrid  columns="2" rendered="#{not empty lugarTuristicoController.selectedLugarTuristico}" columnClasses="value">
+
+                                            <h:outputText value="Id:" />
+                                            <h:outputText value="#{lugarTuristicoController.selectedLugarTuristico.id}" />
+
+                                            <h:outputText value="Name" />
+                                            <h:inputText value="#{lugarTuristicoController.selectedLugarTuristico.nombre}"/>
+
+                                            <h:outputText value="Coordinates" />
+                                            <h:inputText value="#{lugarTuristicoController.selectedLugarTuristico.geoCorde}"/>
+
+
+                                        </p:panelGrid>
+                                        <br/>
+                                        <p:commandButton id="finishedUpdate" onclick="PF('placeDialog').hide()" action="#{lugarTuristicoController.updateLugar(lugarTuristicoController.selectedLugarTuristico.id)}" value="Modify" update=":places:msgs"></p:commandButton>
+                                    </p:outputPanel> 
+                                </p:dialog>
+                            </h:form>
                         </div>
                     </div>
                 </div>
@@ -243,7 +183,7 @@
                         <div class="modal-body">
 
                             <label for="ID Lugar">Place ID</label>
-                            <p:inputText id="idLugar" class="form-control" type="text" placeholder="ID Place" value="#{lugarTuristicoController.idLugarTuristico}"/>
+                            <p:inputText id="idLugar" class="form-control" type="text" placeholder="ID Place" value="#{place.id}"/>
 
                             <label for="New Name">Place</label>
                             <p:inputText id="nuevoNombre" class="form-control" type="text" placeholder="New Name" value="#{lugarTuristicoController.updateNombreTuristico}"/>

@@ -24,9 +24,6 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous"/>
 
         <style>
-            .icon{
-                cursor: pointer;
-            }
             a{
                 opacity: unset;
             }
@@ -54,10 +51,10 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav navbar-right navbar-uppercase">
                         <li id="userList">
-                            <h:link outcome="usersList?faces-redirect=true">User administration</h:link>
+                            <h:link outcome="usersList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">User administration</h:link>
                         </li>
                         <li id="placesList">
-                            <h:link outcome="placesList?faces-redirect=true">Places administration</h:link>
+                            <h:link outcome="placesList?faces-redirect=true" rendered="#{(usuarioController.currentUser.rol.idRol == 1) ? true : false }">Places administration</h:link>
                         </li>
                         <li>
                             <h:form>
@@ -87,64 +84,52 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml">
                                     <div class="icon text-danger item">    
                                         <img src="https://handluggageonly.co.uk/wp-content/uploads/2017/05/Lake-Louise.jpg"/>
                                     </div>
                                     <h3>Lake Louise</h3>
-                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml?place=icefieldsparkway">
                                     <div class="icon text-danger item">
                                         <img src="https://www.lonelyplanet.com/travel-blog/tip-article/wordpress_uploads/2013/03/GettyImages-478080583_full_cs.jpg"/>
                                     </div>
                                     <h3>Icefields Parkway</h3>
-                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml?place=albertatown">
                                     <div class="icon text-danger item">
                                         <img src="https://pinoy-canada.com/wp-content/uploads/2016/09/Banff-Alberta-Canada-11-1024x683.jpg"/>
                                     </div>
                                     <h3>Alberta Town</h3>
-                                </h:link>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml?place=telusworld">
                                     <div class="icon text-danger item">
                                         <img src="https://www.bcmag.ca/wp-content/uploads/2017/04/62328_max.jpg"/>
                                     </div>
                                     <h3>Telus World of Science</h3>
-                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml?place=squamishbridge">
                                     <div class="icon text-danger item">
                                         <img src="http://vacay.ca/wp-content/uploads/2015/12/squamish-suspension-bridge-sea-to-sky.jpg"/>
                                     </div>
                                     <h3>Squamish suspension bridge</h3>
-                                </h:link>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="info-icon">
-                                <h:link outcome="place.xhtml?place=cathedralmontereal">
                                     <div class="icon text-danger item">
                                         <img src="https://i.pinimg.com/originals/37/09/96/370996469759416db7db253f3a07d623.jpg"/>
                                     </div>
                                     <h3>Notre-Dame Basilica (Montreal)</h3>
-                                </h:link>
                             </div>
                         </div>
                     </div>
@@ -180,8 +165,6 @@
         <!--   file where we handle all the script from the Gaia - Bootstrap Template   -->
         <script type="text/javascript" src="/TurismoWeb/assets/js/gaia.js"></script>
 
-        <!--   file where we handle all the menu options  -->
-        <script type="text/javascript" src="/TurismoWeb/assets/js/logic.js"></script>
 
         <script>
             $(function () {

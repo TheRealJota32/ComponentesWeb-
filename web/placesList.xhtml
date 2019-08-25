@@ -94,7 +94,7 @@
                             <h:form id="places">
                                 <p:growl id="msgs" showDetail="true" life="3000"/>
 
-                                <p:dataTable id="basicDT" var="place" value="#{lugarTuristicoController.allPlaces}">
+                                <p:dataTable id="basicDT" var="place" value="#{lugarTuristicoController.allPlaces}" resizableColumns="true" resizeMode="expand">
                                     <f:facet name="header">
                                         Places of Gaia
                                     </f:facet>

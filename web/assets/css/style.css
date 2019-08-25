@@ -113,11 +113,6 @@ div.item.green i {
     color: #16a085;
 }
 
-div.item:hover img {
-    opacity: 0.3;
-    filter: grayscale(100%);
-}
-
 div.item * {
     transition: all .35s ease-in-out;
 }
